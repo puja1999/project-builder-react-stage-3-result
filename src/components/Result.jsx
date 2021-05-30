@@ -33,7 +33,7 @@ export default class ResultComponent extends Component {
               Number of Correct Answers:<span> {this.props.correct}</span>
             </p>
             <p>
-              Number of Wrong Answers:<span>{10-this.props.correct}</span>
+             Number of Wrong Answers:<span>{this.props.attempt}-{this.props.correct}</span>
             </p>
           </div>
         </div>
