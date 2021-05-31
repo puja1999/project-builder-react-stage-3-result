@@ -13,7 +13,8 @@ class App extends Component{
     super()
     this.state={
       correct: 0,
-      attempt: 0
+      attempt: 0, 
+      wrong: 0
     }
   }
   checkCorrect = () => {
@@ -28,17 +29,24 @@ class App extends Component{
     })
   }
 
+  checkWrong = () =>{
+    this.setState({
+      wrong: (this.state.attempt - this.state.correct)+1
+    })
+  }
+
+
   render(){
 
   return (
     <div className="App">
      <Router>
        <Switch>
-         <Route exact path = '/'>
+         <Route exact path = '/project-builder-react-stage-3-result'>
            <Home />
          </Route>
          <Route path="/Quiz">
-           <Quiz checkCorrect={this.checkCorrect} isAttempt={this.isAttempt}/>
+           <Quiz checkCorrect={this.checkCorrect} isAttempt={this.isAttempt} checkWrong={this.checkWrong}/>
          </Route>
          <Route>
            <Route path="/Result">

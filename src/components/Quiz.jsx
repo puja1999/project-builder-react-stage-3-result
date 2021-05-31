@@ -18,6 +18,7 @@ export default class Quiz extends Component {
   next = () => {
     if(this.state.index_value<9){
       this.setState({index_value: this.state.index_value + 1});
+      // setTimeout(this.hide, 1000)
     }
     else{
       alert("Quiz Completed Quit Now")
@@ -26,7 +27,7 @@ export default class Quiz extends Component {
 
   previous = () => {
     if(this.state.index_value === 0){
-      alert("Please Start")
+      alert("Please Start");
     }
     else if(this.state.index_value>0){
       this.setState({index_value:this.state.index_value-1 });
@@ -38,13 +39,14 @@ export default class Quiz extends Component {
   verifyAns = (e)=>{
     let ans = e.target.value
     let btn = document.getElementById('ans')
-    console.log(this.state.datas[this.state.index_value].answer +" " +ans)
+    //console.log(this.state.datas[this.state.index_value].answer +" " +ans)
     this.props.isAttempt()
     if (this.state.datas[this.state.index_value].answer===ans)
     {   
-        btn.innerText="Correct"
+        btn.innerText="Correct!"
         btn.style.backgroundColor='green'
         btn.style.display="block"
+        btn.style.border="2px solid green"
         this.next()
         this.setState({
             correct : this.state.correct+1
@@ -53,11 +55,16 @@ export default class Quiz extends Component {
     }
     else
     {
-        btn.innerText = "Wrong"
+        btn.innerText = "Wrong!!!"
         btn.style.backgroundColor = 'red'
         btn.style.animation = 'hideIt 1s forwards'
         btn.style.display = "block"
+        btn.style.border="2px solid red"
         this.next()
+        this.setState({
+          wrong: (this.state.attempt - this.state.correct) + 1
+        })
+        this.props.checkWrong()
     }
 }
 

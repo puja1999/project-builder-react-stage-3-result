@@ -33,13 +33,13 @@ export default class ResultComponent extends Component {
               Number of Correct Answers:<span> {this.props.correct}</span>
             </p>
             <p>
-             Number of Wrong Answers:<span>{this.props.attempt}-{this.props.correct}</span>
+             Number of Wrong Answers:<span>{this.props.wrong}</span>
             </p>
           </div>
         </div>
         <div className="btn-container">
           <button className="play"><Link to="/Quiz" className="link"> Play Again</Link></button>
-          <button className="back"><Link to="/" className="link">Back to Home</Link></button>
+          <button className="back"><Link to="/project-builder-react-stage-3-result" className="link">Back to Home</Link></button>
         </div>
       </div>
     );
